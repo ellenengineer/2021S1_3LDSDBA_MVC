@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MVC.Models.Produto>
+
+@{
+    ViewData["Title"] = "ListaProdutos";
+}
+
+<h1>Lista de Produtos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                DESCRIÇÃO
+            </th>
+            <th>
+                QUANTIDADE NO ESTOQUE
+            </th>
+            <th>
+                VALOR UNITÁRIO
+            </th>
+            <th>
+                VALOR TOTAL
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdEstqProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValUnitProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValTotal)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CodProd">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CodProd">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CodProd">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
